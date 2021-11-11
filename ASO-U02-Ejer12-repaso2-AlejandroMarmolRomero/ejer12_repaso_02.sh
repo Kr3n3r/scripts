@@ -10,7 +10,7 @@ IP_SERVIDOR="aula.iesjulioverne.es."
 LOG="ejer12_repaso_2.log"
 
 function main(){
-	if [[ $(id|grep "4(adm) -w") ]] || [[ $(id|grep "0(root)" -w) ]]; then
+	if [[ $(id | grep "4(adm)" -w) ]] || [[ $(id | grep "0(root)" -w) ]]; then
 		while [ TRUE ]; do
 			if ping $IP_SERVIDOR -c 1 &> /dev/null ; then
 				echo "[$(date +%Y-%m-%d" "%H:%M:%S)] Conectado satisfactoriamente con aula.iesjulioverne.es." >> $LOG

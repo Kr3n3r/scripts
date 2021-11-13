@@ -8,11 +8,11 @@
 # uso: $0 
 
     
-MAC_ORIGINAL=$(cat /proc/net/arp | grep $(route -n | grep UG | cut -d " " -f 10) -w | awk {'print $4'})
+MAC_ORIGINAL=$(cat /proc/net/arp | grep $(route -n | grep UG | awk {'print $2'}) -w | awk {'print $4'})
 
 function main(){
 	while test TRUE; do
-		MAC_ACTUAL=$(cat /proc/net/arp | grep $(route -n | grep UG | cut -d " " -f 10) -w | awk {'print $4'})
+		MAC_ACTUAL=$(cat /proc/net/arp | grep $(route -n | grep UG | awk {'print $2'}) -w | awk {'print $4'})
 		if [ $MAC_ORIGINAL = $MAC_ACTUAL ];then
 			continue;
 		else
@@ -24,4 +24,3 @@ function main(){
 	done
 	}
 main
-

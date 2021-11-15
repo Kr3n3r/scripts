@@ -8,7 +8,7 @@
 clear
 
 function fcounter(){
-	local NDIRECTORY=`ls -a . | wc -l`
+	local NDIRECTORY=`ls . | wc -l`
 	echo "El número de archivos del directorio actual($PWD) es $NDIRECTORY"
 	}
 

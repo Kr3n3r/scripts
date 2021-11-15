@@ -10,7 +10,7 @@ LOG="ejer12_repaso_3.log"
 function main(){
 	# Comprueba si se ha introducido parámetro y si el usuario tiene permisos de administración
 	if test $# -eq 1;then
-		if [[ $(id | grep "4(adm)" -w) ]] || [[ $(id | grep "0(root)" -w) ]]; then
+		if [[ $(id | grep "4(adm)" -w) ]] || [[ $(id | grep "0(root)" -w) ]]; then # Usar $EUID
 			result=$(ps aux | grep -i "ejer12_repaso_02.sh" | grep -v "grep" | wc -l)
 			case $1 in
 				start)
@@ -84,6 +84,18 @@ CÓDIGOS DE RETORNO
     1 - script no ejecutado como usuario root o administrador
     2 - parámetro incorrecto
     3 - el proceso ya se está ejecutando"
+# O hacerlo de esta manera
+	#cat << HELP
+#SYNOPIS
+    #$0 start|stop|status
+#DESCRIPCIÓN
+    #Permite iniciar, parar y ver estado del servicio.
+#CÓDIGOS DE RETORNO
+    #0 - no hay ningún error.
+    #1 - script no ejecutado como usuario root o administrador
+    #2 - parámetro incorrecto
+    #3 - el proceso ya se está ejecutando
+#HELP
 }
 
 main $*

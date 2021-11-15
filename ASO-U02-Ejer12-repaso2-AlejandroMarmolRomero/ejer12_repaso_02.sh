@@ -10,9 +10,9 @@ IP_SERVIDOR="aula.iesjulioverne.es."
 LOG="ejer12_repaso_2.log"
 
 function main(){
-	if [[ $(id | grep "4(adm)" -w) ]] || [[ $(id | grep "0(root)" -w) ]]; then
+	if [[ $(id | grep "4(adm)" -w) ]] || [[ $(id | grep "0(root)" -w) ]]; then # Usar variable de entorno $EUID
 		while [ TRUE ]; do
-			if ping $IP_SERVIDOR -c 1 &> /dev/null ; then
+			if ping $IP_SERVIDOR -c 1 &> /dev/null ; then # También se puede usar la salida con la variable $?
 				echo "[$(date +%Y-%m-%d" "%H:%M:%S)] Conectado satisfactoriamente con aula.iesjulioverne.es." >> $LOG
 			else
 				echo "[$(date +%Y-%m-%d" "%H:%M:%S)] No hay conexión con aula.iesjulioverne.es." >> $LOG
@@ -24,6 +24,7 @@ function main(){
 		exit 1
 	fi
 }
+s
 function exist(){
 	if test -e $LOG;then
 		rm $LOG

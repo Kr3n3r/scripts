@@ -35,6 +35,7 @@ function menu(){
 		clear
 		done
 }
+# Es mejor copiar y pegar el código de los algoritmos o distinguir los casos y el número de parámetros a introducir
 function exscript(){
 	if [ $op -eq 4 ]; then
 		echo "Introduce los parámetros para la función 4 separados por espacios > "

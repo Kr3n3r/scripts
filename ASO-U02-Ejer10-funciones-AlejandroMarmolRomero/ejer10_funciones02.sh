@@ -7,7 +7,7 @@
 
 function cuenta_ficheros(){
 	if [ $# -eq 1 ] && [ -d $1 ]; then
-		local NDIRECTORY=`ls -a $1 | wc -l`
+		local NDIRECTORY=`ls $1 | wc -l`
 		echo -e "$1:\n \t $NDIRECTORY"
 	else
 		echo "No has introducido el parámetro bien"
